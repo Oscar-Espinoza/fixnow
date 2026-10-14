@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-13",
+  "origin": "User-provided references; originals retained unchanged, outside served landing/",
+  "references": [
+    {
+      "file": "silver-battery-tray.png",
+      "role": "Primary atlas input: silver tray front",
+      "original_path": "/tmp/codex-clipboard-PicAN7.png"
+    },
+    {
+      "file": "graphite-battery-pouch.png",
+      "role": "Primary atlas input: detached graphite pouch",
+      "original_path": "/tmp/codex-clipboard-JkOIOP.png"
+    },
+    {
+      "file": "rear-camera-module.png",
+      "role": "Primary atlas input: metal triple-camera module",
+      "original_path": "/tmp/codex-clipboard-8o1Taf.png"
+    },
+    {
+      "file": "charging-flex.png",
+      "role": "Primary atlas input: complete charging flex",
+      "original_path": "/tmp/codex-clipboard-f8Ov9b.png"
+    },
+    {
+      "file": "front-camera-array.png",
+      "role": "Primary atlas input: front camera/sensor bar",
+      "original_path": "/tmp/codex-clipboard-I1GnR2.png"
+    },
+    {
+      "file": "battery-tray-front-back.png",
+      "role": "Supporting reference: black support plate front/back",
+      "original_path": "/tmp/codex-clipboard-bkZcis.png"
+    },
+    {
+      "file": "battery-tray-detachment.png",
+      "role": "Supporting reference only: dirty teardown showing attachment",
+      "original_path": "/tmp/codex-clipboard-BcT4ei.png"
+    },
+    {
+      "file": "new-battery-reverse.png",
+      "role": "Supporting reference: new battery reverse with pink protection",
+      "original_path": "/tmp/codex-clipboard-w73Ygq.png"
+    },
+    {
+      "file": "phone-front-burgundy.png",
+      "role": "Earlier base-atlas reference: closed front",
+      "original_path": "/tmp/codex-clipboard-sGSqIr.png"
+    },
+    {
+      "file": "phone-back-burgundy.png",
+      "role": "Earlier base-atlas reference: closed rear",
+      "original_path": "/tmp/codex-clipboard-fgpYfU.png"
+    },
+    {
+      "file": "phone-side-perspective.png",
+      "role": "Earlier supporting reference: body sides/thickness",
+      "original_path": "/tmp/codex-clipboard-N5awNo.png"
+    },
+    {
+      "file": "phone-internal-battery.png",
+      "role": "Earlier base-atlas reference: internal chassis and battery",
+      "original_path": "/tmp/codex-clipboard-aGJy3g.png"
+    },
+    {
+      "file": "phone-teardown.png",
+      "role": "Earlier base-atlas reference: separated components",
+      "original_path": "/tmp/codex-clipboard-vy6LzY.png"
+    },
+    {
+      "file": "annotated-logic-board.png",
+      "role": "Earlier board reference; remove annotations and chip markings from finished artwork",
+      "original_path": "/tmp/codex-clipboard-A3NJ8E.png"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "v": 3,
+  "layout": "files",
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-13T17:30:00Z"
+  },
+  "title": "FixNow Design System",
+  "namespace": "FixNow",
+  "libraries": [],
+  "sections": {},
+  "groups": [
+    "Logos"
+  ],
+  "assetGroups": {
+    "Logos": {
+      "name": "Logos",
+      "tile": "l",
+      "order": [
+        "logo-horizontal.svg",
+        "logo-vertical.svg",
+        "logo-horizontal-white.svg",
+        "isologo.svg"
+      ],
+      "files": {
+        "logo-horizontal.svg": {
+          "name": "logo-horizontal.svg",
+          "blob": "a28ff0a4225bdadfbbf709c996135d35",
+          "size": 15319,
+          "type": "image/svg+xml"
+        },
+        "logo-vertical.svg": {
+          "name": "logo-vertical.svg",
+          "blob": "f477c190c03bf82b4ba78b10405542f0",
+          "size": 16464,
+          "type": "image/svg+xml"
+        },
+        "logo-horizontal-white.svg": {
+          "name": "logo-horizontal-white.svg",
+          "blob": "7945ee922e9da529200c45b265a0b10a",
+          "size": 15319,
+          "type": "image/svg+xml"
+        },
+        "isologo.svg": {
+          "name": "isologo.svg",
+          "blob": "bb1626ae7ad93c38e406ab9e5e53a846",
+          "size": 9228,
+          "type": "image/svg+xml"
+        }
+      }
+    }
+  },
+  "blobs": {},
+  "docs": {
+    "readme": "project/README.md",
+    "sections": []
+  },
+  "lastChange": {
+    "by": "Claude",
+    "at": "2026-10-13T18:00:00Z",
+    "via": "Claude Code session",
+    "note": "Added logo SVGs from landing/assets"
+  }
+}

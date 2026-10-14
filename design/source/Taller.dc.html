@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>FixNow · Concepto B · Taller</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#07080A}
+a{color:#4D85FF}a:hover{color:#7BA4FF}
+.b-root{font-family:'Archivo','Helvetica Neue',system-ui,sans-serif;color:#fff;background:#07080A;-webkit-font-smoothing:antialiased}
+.b-root *{box-sizing:border-box}
+h1,h2,h3,p{margin:0}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+.mono{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.disp{font-stretch:72%;font-weight:850;text-transform:uppercase;letter-spacing:-.01em;line-height:.88}
+.h2{font-size:clamp(48px,7vw,104px)}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 26px;border-radius:4px;font-weight:700;font-size:15px;text-decoration:none;letter-spacing:.01em;transition:background .2s ease,transform .2s ease}
+.btn-blue{background:#1E5EFF;color:#fff}
+.btn-blue:hover{background:#3B74FF;color:#fff;transform:translateY(-2px)}
+.btn-line{border:1px solid rgba(255,255,255,.28);color:#fff}
+.btn-line:hover{border-color:#fff;color:#fff}
+.btn svg{transition:transform .2s ease}.btn:hover svg{transform:translateX(4px)}
+.grid-bg{background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:56px 56px}
+.grid-bg-l{background-image:linear-gradient(rgba(7,8,10,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(7,8,10,.06) 1px,transparent 1px);background-size:56px 56px}
+.navlink{color:#C3C9D4;text-decoration:none;padding:10px 2px}
+.navlink:hover{color:#fff}
+/* exploded phone */
+.stage{perspective:1600px;width:420px;height:560px;position:relative}
+.stack{position:absolute;left:50%;top:52%;width:200px;height:400px;margin:-200px 0 0 -100px;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-38deg)}
+.ly{position:absolute;inset:0;border-radius:34px;transform-style:preserve-3d;animation:explode 5.5s cubic-bezier(.6,0,.3,1) infinite alternate}
+@keyframes explode{0%{transform:translateZ(calc(var(--z) * .12))}35%,100%{transform:translateZ(var(--z))}}
+/* issues */
+.issue{display:grid;grid-template-columns:56px 1fr auto;align-items:center;gap:12px;width:100%;min-height:72px;padding:0 20px;border:0;border-top:1px solid rgba(7,8,10,.1);background:transparent;color:#07080A;text-align:left;cursor:pointer;font:inherit;transition:background .2s ease,color .2s ease}
+.issue:hover{background:rgba(30,94,255,.06)}
+.issue.on{background:#07080A;color:#fff}
+.issue .t{font-size:22px;font-weight:750;font-stretch:85%;text-transform:uppercase;letter-spacing:.01em}
+.issue .n{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:#5E6673}
+.issue.on .n{color:#4D85FF}
+.issue .ar{opacity:0;transform:translateX(-8px);transition:all .25s ease}
+.issue.on .ar,.issue:hover .ar{opacity:1;transform:none}
+.zone{position:absolute;border:2px solid #1E5EFF;background:rgba(30,94,255,.16);box-shadow:0 0 0 6px rgba(30,94,255,.12),0 0 40px rgba(30,94,255,.5);transition:all .5s cubic-bezier(.2,.8,.2,1);animation:zpulse 1.8s ease-in-out infinite}
+@keyframes zpulse{0%,100%{box-shadow:0 0 0 6px rgba(30,94,255,.12),0 0 30px rgba(30,94,255,.4)}50%{box-shadow:0 0 0 12px rgba(30,94,255,.06),0 0 60px rgba(30,94,255,.6)}}
+.why{padding:36px 32px;border-right:1px solid rgba(7,8,10,.1);border-bottom:1px solid rgba(7,8,10,.1);display:flex;flex-direction:column;gap:14px;transition:background .3s ease}
+.why:hover{background:#fff}
+.why h3{font-size:26px;font-stretch:80%;font-weight:800;text-transform:uppercase;line-height:1}
+.why p{color:#4A515C;line-height:1.5;font-size:16px}
+.row{display:grid;grid-template-columns:80px minmax(0,1.3fr) minmax(0,1.2fr) auto;align-items:center;gap:24px;padding:28px 24px;border-top:1px solid rgba(7,8,10,.12);text-decoration:none;color:#07080A;transition:background .25s ease,color .25s ease,padding .25s ease}
+.row:hover{background:#1E5EFF;color:#fff;padding-left:36px}
+.row:hover .muted{color:rgba(255,255,255,.85)}
+.row .muted{color:#4A515C}
+.bcard{display:flex;flex-direction:column;background:#fff;border:1px solid rgba(7,8,10,.12);border-radius:6px;overflow:hidden;color:#07080A;transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .25s ease,box-shadow .35s ease}
+.bcard:hover{transform:translateY(-6px);border-color:#1E5EFF;box-shadow:0 24px 50px -24px rgba(30,94,255,.45)}
+.bmap{position:relative;height:180px;background-color:#EEF0F3;background-image:linear-gradient(90deg,transparent 46%,#fff 46% 50%,transparent 50%),linear-gradient(0deg,transparent 58%,#fff 58% 62%,transparent 62%),linear-gradient(32deg,transparent 47%,rgba(255,255,255,.9) 47% 49%,transparent 49%),linear-gradient(rgba(7,8,10,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(7,8,10,.05) 1px,transparent 1px);background-size:100% 100%,100% 100%,100% 100%,28px 28px,28px 28px;border-bottom:1px solid rgba(7,8,10,.1)}
+.bpin{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;background:#1E5EFF;border:3px solid #fff;box-shadow:0 4px 12px rgba(30,94,255,.5)}
+.bpin::after{content:'';position:absolute;inset:-12px;border:1.5px solid #1E5EFF;animation:bping 2s ease-out infinite}
+@keyframes bping{0%{transform:scale(.4);opacity:1}100%{transform:scale(1.3);opacity:0}}
+.bcoord{position:absolute;left:10px;bottom:8px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.08em;color:#5E6673;background:rgba(255,255,255,.85);padding:2px 6px}
+.rcard{flex:0 0 420px;padding:32px;border:1px solid rgba(255,255,255,.1);border-radius:6px;background:#0F1115;display:flex;flex-direction:column;gap:22px}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes scan{0%{top:0}100%{top:100%}}
+@keyframes blink{50%{opacity:0}}
+.in1{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.in2{animation:rise .8s .1s cubic-bezier(.2,.7,.2,1) both}
+.in3{animation:rise .8s .2s cubic-bezier(.2,.7,.2,1) both}
+@supports (animation-timeline: view()){.rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% cover 28%}}
+@media (prefers-reduced-motion: reduce){.b-root *{animation:none !important;transition:none !important}}
+.navlinks{display:flex;gap:28px}
+@media (max-width:900px){.navlinks{display:none}.stage{transform:scale(.72);transform-origin:top center;height:420px}.row{grid-template-columns:48px 1fr;}.row .hide-s{display:none}.wrap{padding:0 20px}.rcard{flex-basis:300px}}
+/* concept switcher */
+.cx{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:100;display:flex;align-items:center;gap:4px;padding:6px;border-radius:999px;background:rgba(18,18,22,.84);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 12px 40px rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.12);font-family:system-ui,-apple-system,'Segoe UI',sans-serif}
+.cx span{color:#A3A3AE;padding:0 10px 0 12px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.cx a{display:flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;color:#fff;text-decoration:none;font-size:13px;font-weight:600;white-space:nowrap;transition:background .2s ease}
+.cx a:hover{background:rgba(255,255,255,.14);color:#fff}
+.cx a.on{background:#fff;color:#0B0B0F}
+@media (max-width:560px){.cx span{display:none}.cx a{padding:0 12px;font-size:12px}}
+</style>
+</helmet>
+<div class="b-root">
+
+<!-- NAV -->
+<header style="position: sticky; top: 0; z-index: 50; background: rgba(7,8,10,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.08)">
+<div class="wrap" style="height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
+<a href="#top" style="display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none">
+<span style="width: 34px; height: 34px; border-radius: 4px; background: #1E5EFF; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M13.5 2L5 13.5h6L10 22l9-12h-6.2z"></path></svg></span>
+<span class="disp" style="font-size: 26px; letter-spacing: .01em">FixNow</span>
+</a>
+<nav class="navlinks mono" aria-label="Principal">
+<a class="navlink" href="#diagnostico">Reparaciones</a>
+<a class="navlink" href="#proceso">Proceso</a>
+<a class="navlink" href="#sucursales">Sucursales</a>
+<a class="navlink" href="#accesorios">Accesorios</a>
+<a class="navlink" href="#contacto">Contacto</a>
+</nav>
+<a class="btn btn-blue" href="https://wa.me/" style="min-height: 42px; padding: 0 18px; font-size: 13px">Consultá ahora</a>
+</div>
+</header>
+
+<!-- HERO (black, blueprint) -->
+<section id="top" class="grid-bg" style="position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,.08)">
+<div aria-hidden="true" style="position: absolute; inset: 0; background: radial-gradient(60% 70% at 75% 45%, rgba(30,94,255,.22), rgba(7,8,10,0) 70%)"></div>
+<div class="wrap" style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(480px, 100%), 1fr)); gap: 40px; align-items: center; padding-top: 96px; padding-bottom: 72px">
+<div style="display: flex; flex-direction: column; gap: 28px">
+<p class="mono in1" style="color: #4D85FF; display: flex; align-items: center; gap: 10px"><span style="width: 8px; height: 8px; background: #1E5EFF; border-radius: 50%; animation: blink 1.4s steps(1) infinite"></span>[01] Servicio técnico iPhone — CABA</p>
+<h1 class="disp in2" style="font-size: clamp(72px, 10.5vw, 164px)">Reparación<br><span style="color: #1E5EFF">a la vista.</span></h1>
+<p class="in3" style="font-size: 20px; line-height: 1.5; color: #C3C9D4; max-width: 500px">Abrimos tu iPhone delante tuyo. Soluciones rápidas, seguras y con garantía: ves cada tornillo, cada pieza, sin sorpresas.</p>
+<div class="in3" style="display: flex; flex-wrap: wrap; gap: 12px">
+<a class="btn btn-blue" href="https://wa.me/">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.8 7L4 20l1.1-4A8 8 0 1 1 20 12z"></path><path d="M9.2 9.2c.3 2.6 2.2 4.6 4.8 5l1-1.3-1.7-.9-.8.8c-.8-.4-1.4-1-1.8-1.8l.8-.8-.9-1.7z"></path></svg>
+Cotizar por WhatsApp</a>
+<a class="btn btn-line" href="#diagnostico">Diagnosticá tu falla <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+<!-- exploded device -->
+<div style="position: relative; display: flex; justify-content: center">
+<div class="stage" role="img" aria-label="iPhone desarmado en capas: vidrio, pantalla, chasis, batería, placa y tapa trasera">
+<div class="stack">
+<div class="ly" style="--z: 0px; background: #1A1C22; box-shadow: inset 0 0 0 2px #2C2F37">
+<div style="position: absolute; top: 18px; left: 18px; width: 74px; height: 74px; border-radius: 20px; background: #0F1115; box-shadow: inset 0 0 0 2px #2C2F37"></div>
+</div>
+<div class="ly" style="--z: 46px; background: #0E1A12; box-shadow: inset 0 0 0 1.5px #24402C; background-image: linear-gradient(90deg, rgba(77,133,255,.25) 1px, transparent 1px), linear-gradient(rgba(77,133,255,.25) 1px, transparent 1px); background-size: 18px 18px; inset: 30px 24px 150px 24px; border-radius: 14px; background-color: #0C1322"></div>
+<div class="ly" style="--z: 92px; inset: 120px 30px 40px 30px; border-radius: 14px; background: #1E5EFF; box-shadow: inset 0 0 0 2px #4D85FF"></div>
+<div class="ly" style="--z: 138px; background: transparent; box-shadow: inset 0 0 0 7px #8B93A1, inset 0 0 0 9px #5E6673"></div>
+<div class="ly" style="--z: 184px; background: linear-gradient(160deg, #0E2A6B, #050B1C); box-shadow: inset 0 0 0 7px #000"></div>
+<div class="ly" style="--z: 230px; background: linear-gradient(135deg, rgba(255,255,255,.28), rgba(255,255,255,.04) 50%, rgba(255,255,255,.16)); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.55)"></div>
+</div>
+<!-- callouts -->
+<div class="mono" style="position: absolute; right: -20px; top: 40px; display: flex; flex-direction: column; gap: 4px; color: #fff"><span style="color: #4D85FF">06 · Vidrio</span><span style="color: #9AA3B2; font-size: 11px">Cambio desde 30 min</span></div>
+<div class="mono" style="position: absolute; left: -30px; top: 230px; display: flex; flex-direction: column; gap: 4px; color: #fff"><span style="color: #4D85FF">03 · Batería</span><span style="color: #9AA3B2; font-size: 11px">Cambio desde 45 min</span></div>
+<div class="mono" style="position: absolute; right: -10px; bottom: 60px; display: flex; flex-direction: column; gap: 4px; color: #fff"><span style="color: #4D85FF">01 · Tapa trasera</span><span style="color: #9AA3B2; font-size: 11px">Vidrio trasero y cámaras</span></div>
+</div>
+</div>
+</div>
+<!-- spec bar -->
+<div style="position: relative; border-top: 1px solid rgba(255,255,255,.08)">
+<div class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr))">
+<div style="padding: 28px 0; display: flex; flex-direction: column; gap: 6px; border-right: 1px solid rgba(255,255,255,.08)"><span class="disp" style="font-size: 44px">30′</span><span class="mono" style="color: #9AA3B2">Pantallas · desde</span></div>
+<div style="padding: 28px 24px; display: flex; flex-direction: column; gap: 6px; border-right: 1px solid rgba(255,255,255,.08)"><span class="disp" style="font-size: 44px">45′</span><span class="mono" style="color: #9AA3B2">Baterías · desde</span></div>
+<div style="padding: 28px 24px; display: flex; flex-direction: column; gap: 6px; border-right: 1px solid rgba(255,255,255,.08)"><span class="disp" style="font-size: 44px">4,8<span style="color: #1E5EFF">★</span></span><span class="mono" style="color: #9AA3B2">Reseñas reales en Google</span></div>
+<div style="padding: 28px 24px; display: flex; flex-direction: column; gap: 6px"><span class="disp" style="font-size: 44px">+ Miles</span><span class="mono" style="color: #9AA3B2">de clientes confían</span></div>
+</div>
+</div>
+</section>
+
+<!-- DIAGNOSTIC (white, interactive) -->
+<section id="diagnostico" class="grid-bg-l" style="background-color: #fff; color: #07080A; padding: 120px 0">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 56px">
+<div class="rv" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p class="mono" style="color: #1E5EFF">[02] Diagnóstico</p>
+<h2 class="disp h2">¿Qué necesitás<br>reparar?</h2>
+</div>
+<p style="font-size: 18px; line-height: 1.5; color: #4A515C; max-width: 380px">Tocá la falla y mirá dónde trabajamos. Te asesoramos por WhatsApp en minutos.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: 0; border: 1px solid rgba(7,8,10,.12); background: #fff">
+<div style="display: flex; flex-direction: column; border-right: 1px solid rgba(7,8,10,.12)">
+<sc-for list="{{ issues }}" as="it" hint-placeholder-count="6">
+<button type="button" class="issue {{ it.cls }}" onClick="{{ it.pick }}" aria-pressed="{{ it.pressed }}">
+<span class="n">{{ it.num }}</span>
+<span class="t">{{ it.title }}</span>
+<svg class="ar" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</button>
+</sc-for>
+</div>
+<div style="position: relative; padding: 40px; display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; background: #F2F3F5; overflow: hidden; min-height: 432px">
+<div style="position: relative; width: 170px; height: 340px; border-radius: 30px; border: 2px solid #07080A; background: #fff" aria-hidden="true">
+<span style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 54px; height: 16px; border-radius: 10px; background: #07080A"></span>
+<span style="position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); width: 30px; height: 6px; border-radius: 3px 3px 0 0; background: #07080A"></span>
+<span style="position: absolute; left: -6px; top: 70px; width: 4px; height: 26px; border-radius: 2px; background: #07080A"></span>
+<span style="position: absolute; right: -6px; top: 90px; width: 4px; height: 44px; border-radius: 2px; background: #07080A"></span>
+<div class="zone" style="top: {{ zone.top }}; left: {{ zone.left }}; width: {{ zone.w }}; height: {{ zone.h }}; border-radius: {{ zone.r }}"></div>
+<div style="position: absolute; left: 0; right: 0; height: 2px; background: rgba(30,94,255,.5); animation: scan 2.6s linear infinite alternate"></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 18px; min-width: 0">
+<p class="mono" style="color: #1E5EFF">Falla {{ cur.num }}</p>
+<h3 class="disp" style="font-size: 52px">{{ cur.title }}</h3>
+<p style="font-size: 19px; line-height: 1.45; color: #07080A">{{ cur.symptom }}</p>
+<div style="display: flex; flex-direction: column; gap: 0; border-top: 1px solid rgba(7,8,10,.12)">
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(7,8,10,.12)"><span class="mono" style="color: #4A515C">Tiempo</span><span style="font-weight: 600">{{ cur.time }}</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(7,8,10,.12)"><span class="mono" style="color: #4A515C">Garantía</span><span style="font-weight: 600">Incluida</span></div>
+</div>
+<a class="btn btn-blue" href="https://wa.me/" style="align-self: flex-start">Consultar esta falla <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PROCESS (blue) -->
+<section id="proceso" style="background: #1E5EFF; color: #fff; padding: 120px 0; position: relative; overflow: hidden">
+<div aria-hidden="true" class="disp" style="position: absolute; right: -40px; bottom: -70px; font-size: 360px; color: rgba(255,255,255,.07); white-space: nowrap">A LA VISTA</div>
+<div class="wrap" style="position: relative; display: flex; flex-direction: column; gap: 64px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 18px">
+<p class="mono" style="color: rgba(255,255,255,.85)">[03] ¿Cómo funciona?</p>
+<h2 class="disp h2">4 pasos.<br>Cero misterio.</h2>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); border-top: 2px solid #fff">
+<li class="rv" style="padding: 28px 24px 0 0; display: flex; flex-direction: column; gap: 14px"><span class="mono">Paso 01</span><h3 class="disp" style="font-size: 34px">Escribinos</h3><p style="font-size: 16px; line-height: 1.5; color: rgba(255,255,255,.9)">Contanos la falla por WhatsApp. Respondemos en minutos.</p></li>
+<li class="rv" style="padding: 28px 24px 0 0; display: flex; flex-direction: column; gap: 14px"><span class="mono">Paso 02</span><h3 class="disp" style="font-size: 34px">Vení a la sucursal</h3><p style="font-size: 16px; line-height: 1.5; color: rgba(255,255,255,.9)">Elegí una de nuestras 4 sucursales en CABA.</p></li>
+<li class="rv" style="padding: 28px 24px 0 0; display: flex; flex-direction: column; gap: 14px"><span class="mono">Paso 03</span><h3 class="disp" style="font-size: 34px">Mirá la reparación</h3><p style="font-size: 16px; line-height: 1.5; color: rgba(255,255,255,.9)">Trabajamos delante tuyo, con repuestos de alta calidad.</p></li>
+<li class="rv" style="padding: 28px 24px 0 0; display: flex; flex-direction: column; gap: 14px"><span class="mono">Paso 04</span><h3 class="disp" style="font-size: 34px">Llevátelo con garantía</h3><p style="font-size: 16px; line-height: 1.5; color: rgba(255,255,255,.9)">La mayoría, en menos de una hora.</p></li>
+</ol>
+</div>
+</section>
+
+<!-- WHY (paper grid) -->
+<section style="background: #F2F3F5; color: #07080A; padding: 120px 0">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 56px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 18px">
+<p class="mono" style="color: #1E5EFF">[04] Especificaciones del servicio</p>
+<h2 class="disp h2">¿Por qué FixNow?</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); border-top: 1px solid rgba(7,8,10,.1); border-left: 1px solid rgba(7,8,10,.1)">
+<div class="why rv"><div style="display: flex; justify-content: space-between; align-items: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1E5EFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg><span class="mono" style="color: #5E6673">S-01</span></div><h3>Reparación delante tuyo</h3><p>Ves todo el proceso, sin sorpresas.</p></div>
+<div class="why rv"><div style="display: flex; justify-content: space-between; align-items: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1E5EFF" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><span class="mono" style="color: #5E6673">S-02</span></div><h3>Servicio rápido</h3><p>La mayoría de las reparaciones en menos de 1 hora.</p></div>
+<div class="why rv"><div style="display: flex; justify-content: space-between; align-items: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1E5EFF" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.8-4.6 4.4 1.2 6.3L12 17l-5.7 3.1 1.2-6.3L2.9 9.4l6.3-.8z"></path></svg><span class="mono" style="color: #5E6673">S-03</span></div><h3>Repuestos de alta calidad</h3><p>Funcionamiento y duración garantizados.</p></div>
+<div class="why rv"><div style="display: flex; justify-content: space-between; align-items: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1E5EFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"></path></svg><span class="mono" style="color: #5E6673">S-04</span></div><h3>Técnicos especializados</h3><p>Con experiencia en dispositivos de la línea premium.</p></div>
+<div class="why rv"><div style="display: flex; justify-content: space-between; align-items: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1E5EFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><span class="mono" style="color: #5E6673">S-05</span></div><h3>4 sucursales en CABA</h3><p>Elegí la más cercana.</p></div>
+<div class="why rv"><div style="display: flex; justify-content: space-between; align-items: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1E5EFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg><span class="mono" style="color: #5E6673">S-06</span></div><h3>Garantía</h3><p>En todas nuestras reparaciones.</p></div>
+</div>
+</div>
+</section>
+
+<!-- REVIEWS (black marquee) -->
+<section style="background: #07080A; padding: 120px 0; overflow: hidden">
+<div class="wrap" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 32px; margin-bottom: 56px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 18px">
+<p class="mono" style="color: #4D85FF">[05] Opiniones reales de Google</p>
+<h2 class="disp h2">Miles de clientes<br>ya confían.</h2>
+</div>
+<div class="rv" style="display: flex; align-items: center; gap: 20px">
+<span class="disp" style="font-size: 120px; color: #1E5EFF">4,8</span>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="display: flex; gap: 4px; color: #fff" aria-label="5 estrellas"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.8-4.6 4.4 1.2 6.3L12 17l-5.7 3.1 1.2-6.3L2.9 9.4l6.3-.8z"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.8-4.6 4.4 1.2 6.3L12 17l-5.7 3.1 1.2-6.3L2.9 9.4l6.3-.8z"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.8-4.6 4.4 1.2 6.3L12 17l-5.7 3.1 1.2-6.3L2.9 9.4l6.3-.8z"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.8-4.6 4.4 1.2 6.3L12 17l-5.7 3.1 1.2-6.3L2.9 9.4l6.3-.8z"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.8-4.6 4.4 1.2 6.3L12 17l-5.7 3.1 1.2-6.3L2.9 9.4l6.3-.8z"></path></svg></span>
+<a class="mono" href="#" style="color: #fff; text-decoration: underline; text-underline-offset: 4px; min-height: 44px; display: flex; align-items: center">Ver todas las reseñas →</a>
+</div>
+</div>
+</div>
+<div style="display: flex; gap: 20px; width: max-content; animation: marquee 40s linear infinite">
+<figure class="rcard" style="margin: 0"><span class="mono" style="color: #4D85FF">★★★★★ · Pantalla</span><blockquote style="margin: 0; font-size: 20px; line-height: 1.45; color: #E6E9EF">“Excelente atención. Me cambiaron la pantalla en menos de una hora y pude ver todo el proceso. Súper recomendados.”</blockquote><figcaption class="mono" style="color: #9AA3B2">— Mariana G.</figcaption></figure>
+<figure class="rcard" style="margin: 0"><span class="mono" style="color: #4D85FF">★★★★★ · Batería</span><blockquote style="margin: 0; font-size: 20px; line-height: 1.45; color: #E6E9EF">“Muy profesionales y honestos. La batería quedó perfecta y me explicaron todo antes de hacer la reparación.”</blockquote><figcaption class="mono" style="color: #9AA3B2">— Lucas R.</figcaption></figure>
+<figure class="rcard" style="margin: 0"><span class="mono" style="color: #4D85FF">★★★★★ · Atención</span><blockquote style="margin: 0; font-size: 20px; line-height: 1.45; color: #E6E9EF">“La atención es impecable. Se nota que saben lo que hacen. Rápido, claro y con garantía.”</blockquote><figcaption class="mono" style="color: #9AA3B2">— Carolina M.</figcaption></figure>
+<figure class="rcard" style="margin: 0" aria-hidden="true"><span class="mono" style="color: #4D85FF">★★★★★ · Pantalla</span><blockquote style="margin: 0; font-size: 20px; line-height: 1.45; color: #E6E9EF">“Excelente atención. Me cambiaron la pantalla en menos de una hora y pude ver todo el proceso. Súper recomendados.”</blockquote><figcaption class="mono" style="color: #9AA3B2">— Mariana G.</figcaption></figure>
+<figure class="rcard" style="margin: 0" aria-hidden="true"><span class="mono" style="color: #4D85FF">★★★★★ · Batería</span><blockquote style="margin: 0; font-size: 20px; line-height: 1.45; color: #E6E9EF">“Muy profesionales y honestos. La batería quedó perfecta y me explicaron todo antes de hacer la reparación.”</blockquote><figcaption class="mono" style="color: #9AA3B2">— Lucas R.</figcaption></figure>
+<figure class="rcard" style="margin: 0" aria-hidden="true"><span class="mono" style="color: #4D85FF">★★★★★ · Atención</span><blockquote style="margin: 0; font-size: 20px; line-height: 1.45; color: #E6E9EF">“La atención es impecable. Se nota que saben lo que hacen. Rápido, claro y con garantía.”</blockquote><figcaption class="mono" style="color: #9AA3B2">— Carolina M.</figcaption></figure>
+</div>
+</section>
+
+<!-- BRANCHES (white, board) -->
+<section id="sucursales" style="background: #fff; color: #07080A; padding: 120px 0">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 48px">
+<div class="rv" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p class="mono" style="color: #1E5EFF">[06] Sucursales</p>
+<h2 class="disp h2">Estamos en<br>tu barrio.</h2>
+</div>
+<a class="btn" href="#" style="border: 1px solid #07080A; color: #07080A">Ver todas en el mapa <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 16px">
+<article class="bcard rv"><div class="bmap" aria-hidden="true"><span class="bpin" style="left: 48%; top: 42%"></span><span class="bcoord">S/01 · Belgrano</span></div><div style="padding: 20px 20px 18px; display: flex; flex-direction: column; gap: 6px"><span class="mono" style="color: #1E5EFF">S/01</span><h3 class="disp" style="font-size: 40px">Belgrano</h3><p style="color: #4A515C; font-size: 16px">Av. Balbín 2570</p><a class="mono" href="#" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #07080A; text-decoration: none; margin-top: 4px">Cómo llegar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"></path></svg></a></div></article>
+<article class="bcard rv"><div class="bmap" aria-hidden="true" style="background-position: 30% 0, 0 20%, 0 0, 0 0, 0 0"><span class="bpin" style="left: 36%; top: 64%"></span><span class="bcoord">S/02 · Villa Urquiza</span></div><div style="padding: 20px 20px 18px; display: flex; flex-direction: column; gap: 6px"><span class="mono" style="color: #1E5EFF">S/02</span><h3 class="disp" style="font-size: 40px">Villa Urquiza</h3><p style="color: #4A515C; font-size: 16px">Triunvirato 5474</p><a class="mono" href="#" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #07080A; text-decoration: none; margin-top: 4px">Cómo llegar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"></path></svg></a></div></article>
+<article class="bcard rv"><div class="bmap" aria-hidden="true" style="background-position: -20% 0, 0 -30%, 0 0, 0 0, 0 0"><span class="bpin" style="left: 60%; top: 38%"></span><span class="bcoord">S/03 · Villa Crespo</span></div><div style="padding: 20px 20px 18px; display: flex; flex-direction: column; gap: 6px"><span class="mono" style="color: #1E5EFF">S/03</span><h3 class="disp" style="font-size: 40px">Villa Crespo</h3><p style="color: #4A515C; font-size: 16px">Thames 660</p><a class="mono" href="#" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #07080A; text-decoration: none; margin-top: 4px">Cómo llegar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"></path></svg></a></div></article>
+<article class="bcard rv"><div class="bmap" aria-hidden="true" style="background-position: 60% 0, 0 60%, 0 0, 0 0, 0 0"><span class="bpin" style="left: 52%; top: 70%"></span><span class="bcoord">S/04 · Recoleta</span></div><div style="padding: 20px 20px 18px; display: flex; flex-direction: column; gap: 6px"><span class="mono" style="color: #1E5EFF">S/04</span><h3 class="disp" style="font-size: 40px">Recoleta</h3><p style="color: #4A515C; font-size: 16px">Av. Santa Fe [ALTURA]</p><a class="mono" href="#" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #07080A; text-decoration: none; margin-top: 4px">Cómo llegar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"></path></svg></a></div></article>
+</div>
+</div>
+</section>
+
+<!-- ACCESSORIES (black) -->
+<section id="accesorios" class="grid-bg" style="background-color: #07080A; padding: 120px 0; border-top: 1px solid rgba(255,255,255,.08)">
+<div class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 1fr)); gap: 56px; align-items: center">
+<div class="rv" style="display: flex; flex-direction: column; gap: 24px">
+<p class="mono" style="color: #4D85FF">[07] Accesorios</p>
+<h2 class="disp h2">Protegé tu<br>dispositivo.</h2>
+<p style="font-size: 19px; line-height: 1.5; color: #C3C9D4; max-width: 440px">Fundas, protectores, cargadores y más. Todo lo que necesitás, en un solo lugar.</p>
+<a class="btn btn-blue" href="#" style="align-self: flex-start">Ver tienda online <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr)); gap: 1px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.1)">
+<div class="rv" style="background: #0F1115; padding: 28px; display: flex; flex-direction: column; gap: 18px; min-height: 220px">
+<span class="mono" style="color: #9AA3B2">A-01</span>
+<div aria-hidden="true" style="width: 54px; height: 100px; border-radius: 14px; border: 2px solid #4D85FF; position: relative"><span style="position: absolute; top: 6px; left: 6px; width: 20px; height: 20px; border-radius: 6px; border: 2px solid #4D85FF"></span></div>
+<b style="font-size: 22px; font-stretch: 80%; text-transform: uppercase">Fundas</b>
+</div>
+<div class="rv" style="background: #0F1115; padding: 28px; display: flex; flex-direction: column; gap: 18px; min-height: 220px">
+<span class="mono" style="color: #9AA3B2">A-02</span>
+<div aria-hidden="true" style="width: 54px; height: 100px; border-radius: 14px; border: 2px dashed #4D85FF; background: rgba(77,133,255,.12)"></div>
+<b style="font-size: 22px; font-stretch: 80%; text-transform: uppercase">Protectores</b>
+</div>
+<div class="rv" style="background: #0F1115; padding: 28px; display: flex; flex-direction: column; gap: 18px; min-height: 220px">
+<span class="mono" style="color: #9AA3B2">A-03</span>
+<div aria-hidden="true" style="width: 70px; height: 70px; border-radius: 16px; border: 2px solid #4D85FF; margin: 15px 0; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="#4D85FF"><path d="M13.5 2L5 13.5h6L10 22l9-12h-6.2z"></path></svg></div>
+<b style="font-size: 22px; font-stretch: 80%; text-transform: uppercase">Cargadores</b>
+</div>
+<div style="grid-column: 1 / -1; background: #0F1115; padding: 22px 28px; display: flex; flex-wrap: wrap; gap: 14px 32px" class="mono">
+<span style="display: flex; align-items: center; gap: 10px; color: #E6E9EF"><span style="width: 6px; height: 6px; background: #1E5EFF"></span>Envíos a todo el país</span>
+<span style="display: flex; align-items: center; gap: 10px; color: #E6E9EF"><span style="width: 6px; height: 6px; background: #1E5EFF"></span>Retirá en sucursal</span>
+<span style="display: flex; align-items: center; gap: 10px; color: #E6E9EF"><span style="width: 6px; height: 6px; background: #1E5EFF"></span>Alta calidad</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA (blue) + FOOTER -->
+<footer id="contacto">
+<div style="background: #1E5EFF; padding: 110px 0">
+<div class="wrap rv" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 40px">
+<h2 class="disp" style="font-size: clamp(64px, 12vw, 190px)">Escribinos.</h2>
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 360px; padding-bottom: 20px">
+<p style="font-size: 19px; line-height: 1.5">Contanos qué le pasó a tu iPhone. Te respondemos en minutos.</p>
+<a class="btn" href="https://wa.me/" style="background: #07080A; color: #fff; align-self: flex-start">Cotizar por WhatsApp <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+</div>
+<div style="background: #07080A; padding: 56px 0 120px">
+<div class="wrap" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px" >
+<span class="disp" style="font-size: 30px">FixNow</span>
+<span class="mono" style="color: #9AA3B2">Tu dispositivo, en buenas manos</span>
+<span class="mono" style="color: #9AA3B2">WhatsApp [NÚMERO] · Instagram [@USUARIO]</span>
+</div>
+</div>
+</footer>
+
+<!-- Concept switcher -->
+<nav class="cx" aria-label="Cambiar de concepto">
+<span>Vista</span>
+<a class="on" href="Taller.dc.html" aria-current="page">B · Desktop</a>
+<a href="TallerMovil.dc.html">B · Teléfono</a>
+<a href="Chat.dc.html">D · Chat (reserva)</a>
+</nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":7600}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { sel: 0 };
+}
+renderVals() {
+var data = [
+{ num: '01', title: 'Pantalla', symptom: 'Vidrio roto, manchas o sin imagen.', time: 'Desde 30 min', zone: { top: '4px', left: '4px', w: '158px', h: '328px', r: '26px' } },
+{ num: '02', title: 'Batería', symptom: 'Se descarga rápido o no carga.', time: 'Desde 45 min', zone: { top: '110px', left: '30px', w: '106px', h: '170px', r: '12px' } },
+{ num: '03', title: 'Vidrio trasero', symptom: 'Roto o con fisuras.', time: 'Consultá por WhatsApp', zone: { top: '-8px', left: '-8px', w: '182px', h: '352px', r: '36px' } },
+{ num: '04', title: 'Carga', symptom: 'No carga, carga lento o se corta.', time: 'Consultá por WhatsApp', zone: { top: '300px', left: '55px', w: '56px', h: '38px', r: '10px' } },
+{ num: '05', title: 'Cámara', symptom: 'Fotos borrosas o no funciona.', time: 'Consultá por WhatsApp', zone: { top: '14px', left: '14px', w: '70px', h: '70px', r: '18px' } },
+{ num: '06', title: 'Equipo mojado', symptom: 'No enciende o presenta fallas. Apagalo y traelo cuanto antes.', time: 'Consultá por WhatsApp', zone: { top: '60px', left: '20px', w: '126px', h: '250px', r: '50%' } }
+];
+var sel = this.state.sel;
+var self = this;
+var issues = data.map(function (d, i) {
+return { num: d.num, title: d.title, cls: i === sel ? 'on' : '', pressed: i === sel ? 'true' : 'false', pick: function () { self.setState({ sel: i }); } };
+});
+return { issues: issues, cur: data[sel], zone: data[sel].zone };
+}
+}
+</script>
+</body>
+</html>

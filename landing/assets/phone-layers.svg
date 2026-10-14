@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <!-- Original conceptual repair illustration. Not a hardware teardown. -->
+  <defs>
+    <linearGradient id="titanium" x2="1" y2="1"><stop stop-color="#CCCCCC"/><stop offset=".5" stop-color="#F6F6F6"/><stop offset="1" stop-color="#CCCCCC"/></linearGradient>
+    <linearGradient id="display" x2="1" y2="1"><stop stop-color="#141414"/><stop offset="1" stop-color="#2651A7"/></linearGradient>
+  </defs>
+  <symbol id="glass" viewBox="0 0 160 346">
+    <rect x="2" y="2" width="156" height="342" rx="28" fill="url(#titanium)" stroke="#CCCCCC" stroke-width="3"/>
+    <rect x="7" y="7" width="146" height="332" rx="23" fill="#F6F6F6" fill-opacity=".6" stroke="#141414" stroke-width="1.5"/>
+    <rect x="58" y="17" width="44" height="12" rx="6" fill="#141414"/>
+    <path d="M20 96L123 38M20 132L140 64" stroke="#FFFFFF" stroke-opacity=".9" stroke-width="5" stroke-linecap="round"/>
+    <path d="M1 62v20M1 98v30M159 88v38" stroke="#141414" stroke-width="2"/>
+  </symbol>
+  <symbol id="screen" viewBox="0 0 160 346">
+    <rect x="2" y="2" width="156" height="342" rx="28" fill="#141414" stroke="#CCCCCC" stroke-width="3"/>
+    <rect x="7" y="7" width="146" height="332" rx="23" fill="url(#display)"/>
+    <path d="M8 260C22 184 110 246 153 90V286C98 334 49 297 8 327Z" fill="#0066FF"/>
+    <path d="M8 297C73 251 106 324 153 266" fill="none" stroke="#CCCCCC" stroke-opacity=".45" stroke-width="1.5"/>
+    <rect x="57" y="16" width="46" height="14" rx="7" fill="#141414"/>
+    <circle cx="91" cy="23" r="2" fill="#CCCCCC"/>
+    <rect x="57" y="324" width="46" height="3" rx="1.5" fill="#F6F6F6"/>
+  </symbol>
+  <symbol id="battery" viewBox="0 0 160 346">
+    <rect x="2" y="2" width="156" height="342" rx="28" fill="#F6F6F6" stroke="#CCCCCC" stroke-width="3"/>
+    <rect x="23" y="68" width="114" height="222" rx="16" fill="#0066FF"/>
+    <path d="M69 45h22v23H69z" fill="#CCCCCC"/>
+    <path d="M87 134L63 184h20l-10 42 29-57H82z" fill="#F6F6F6"/>
+    <path d="M39 257h46M39 265h68M39 273h32" stroke="#F6F6F6" stroke-opacity=".55" stroke-width="2"/>
+    <circle cx="14" cy="28" r="3" fill="#CCCCCC"/><circle cx="146" cy="318" r="3" fill="#CCCCCC"/>
+  </symbol>
+  <symbol id="board" viewBox="0 0 160 346">
+    <rect x="2" y="2" width="156" height="342" rx="28" fill="#CCCCCC" stroke="#141414" stroke-width="2"/>
+    <g fill="none" stroke="#F6F6F6" stroke-width="2">
+      <path d="M18 56h33v25h31v35h58M18 106h22v42h47v64h53M18 168h24v73h55v46h43M18 280h42v33h80M102 26v42h38M128 26v24h12"/>
+      <path d="M22 28v18M52 28v30M112 140v43h28M24 204v30M122 244v24"/>
+    </g>
+    <rect x="52" y="110" width="56" height="61" rx="6" fill="#141414"/>
+    <rect x="62" y="120" width="36" height="41" rx="3" fill="#CCCCCC" stroke="#F6F6F6"/>
+    <rect x="70" y="239" width="35" height="34" rx="4" fill="#141414"/>
+    <g fill="#0066FF"><circle cx="18" cy="56" r="3"/><circle cx="140" cy="116" r="3"/><circle cx="18" cy="168" r="3"/><circle cx="140" cy="287" r="3"/></g>
+    <rect x="62" y="322" width="36" height="9" rx="3" fill="#141414"/>
+  </symbol>
+  <symbol id="back" viewBox="0 0 160 346">
+    <rect x="2" y="2" width="156" height="342" rx="28" fill="url(#titanium)" stroke="#CCCCCC" stroke-width="3"/>
+    <rect x="10" y="12" width="140" height="81" rx="18" fill="#CCCCCC" stroke="#F6F6F6" stroke-width="2"/>
+    <g fill="#141414" stroke="#F6F6F6" stroke-width="3"><circle cx="34" cy="35" r="14"/><circle cx="67" cy="35" r="14"/><circle cx="34" cy="69" r="14"/></g>
+    <g fill="#2651A7"><circle cx="34" cy="35" r="6"/><circle cx="67" cy="35" r="6"/><circle cx="34" cy="69" r="6"/></g>
+    <circle cx="128" cy="35" r="6" fill="#F6F6F6"/><circle cx="128" cy="69" r="5" fill="#141414"/>
+    <circle cx="80" cy="208" r="46" fill="none" stroke="#F6F6F6" stroke-width="2"/>
+    <path d="M65 272h30" stroke="#F6F6F6" stroke-width="3" stroke-linecap="round"/>
+  </symbol>
+<symbol id="screen-broken" viewBox="0 0 160 346"><use href="#screen"/><g fill="none" stroke="#e5e8ed" stroke-width=".8" opacity=".78" stroke-linecap="round" stroke-linejoin="round"><path d="M126 37 103 56 84 83 43 121 24 169 39 199 15 239 M126 37 108 98 122 143 89 202 108 252 82 308 M126 37 143 73 134 115 148 160 119 197 140 250 M126 37 76 39 55 59 23 47 M103 56 118 68 143 73 M84 83 108 98 134 115 M43 121 77 129 122 143 M24 169 63 167 89 202 119 197 M39 199 67 224 108 252 140 250 M15 239 45 256 54 298 82 308 M108 98 96 124 77 129 63 167 M77 129 90 150 63 167 M118 68 125 93 108 98 M43 121 22 104 16 82"/></g></symbol>
+</svg>

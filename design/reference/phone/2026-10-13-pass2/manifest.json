@@ -1,0 +1,50 @@
+{
+  "origin": "User-supplied new reference pass, copied unchanged outside landing/",
+  "references": [
+    {
+      "file": "screen-first-opening.png",
+      "role": "First opened front: screen underside and dark battery cover",
+      "original_path": "/tmp/codex-clipboard-ZKrJ39.png"
+    },
+    {
+      "file": "broken-screen.png",
+      "role": "Crack pattern reference",
+      "original_path": "/tmp/codex-clipboard-e09hPN.png"
+    },
+    {
+      "file": "exploded-reference.png",
+      "role": "Illustrative assembly guide only; labels are not product specifications",
+      "original_path": "/tmp/codex-clipboard-CyXXH8.png"
+    },
+    {
+      "file": "battery-plate-front.png",
+      "role": "Detached dark battery/support plate, front",
+      "original_path": "/tmp/codex-clipboard-odJlH5.png"
+    },
+    {
+      "file": "battery-plate-reverse.png",
+      "role": "Reverse of removed plate; board remains in phone",
+      "original_path": "/tmp/codex-clipboard-J3xxhB.png"
+    },
+    {
+      "file": "after-plate-removal.png",
+      "role": "Mounted board and deeper internals after plate removal",
+      "original_path": "/tmp/codex-clipboard-y2qxDG.png"
+    },
+    {
+      "file": "rear-glass-opening.png",
+      "role": "Rear-cover underside, coil, body battery and cameras",
+      "original_path": "/tmp/codex-clipboard-a8AMxl.png"
+    },
+    {
+      "file": "rear-camera-removal.png",
+      "role": "Actual camera carrier extraction",
+      "original_path": "/tmp/codex-clipboard-AEqBM1.png"
+    },
+    {
+      "file": "empty-chassis.png",
+      "role": "Optional supporting reference: empty internal frame",
+      "original_path": "/tmp/codex-clipboard-87fcCN.png"
+    }
+  ]
+}

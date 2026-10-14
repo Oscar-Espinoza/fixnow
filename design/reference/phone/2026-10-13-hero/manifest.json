@@ -1,0 +1,41 @@
+{
+  "origin": "User-supplied hero composition references, originals copied unchanged outside landing/",
+  "references": [
+    {
+      "file": "motherboard-region.png",
+      "role": "User annotation identifies board region below upper camera hardware; never copy green overlay"
+    },
+    {
+      "file": "empty-battery-compartment.png",
+      "role": "Recessed vacant battery bay after plate removal, graphite base remains"
+    },
+    {
+      "file": "silver-plate-separated.png",
+      "role": "Silver lower battery backing attached to dark upper support bracket"
+    },
+    {
+      "file": "rejected-v3-hero.png",
+      "role": "User rejection: full-phone middle, small back, excessive gaps; feedback only"
+    },
+    {
+      "file": "open-phone-no-screen-no-battery.jpeg",
+      "role": "Latest user reference: actual front interior with empty recessed battery bay and graphite floor"
+    },
+    {
+      "file": "satin-rose-side-reference.png",
+      "role": "Latest user side reference: satin muted rose colour, rounded metal profile, soft highlights"
+    },
+    {
+      "file": "back-glass-two-faces-reference.png",
+      "role": "Outside/back face is left; inward/front graphite face is right. Hero inner face faces the opened body; the reverse must match the rose phone exterior."
+    },
+    {
+      "file": "rejected-inner-backglass-hero.png",
+      "role": "Feedback only: detached rear glass incorrectly graphite with thick rose rim"
+    },
+    {
+      "file": "rejected-outer-glass-front.png",
+      "role": "Oscar corrected v9: outer rose face was incorrectly facing the open phone; show the inner/front graphite surface instead."
+    }
+  ]
+}

@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>FixNow · B · Taller (teléfono)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#07080A}
+a{color:#4D85FF}a:hover{color:#7BA4FF}
+.m-root{font-family:'Archivo','Helvetica Neue',system-ui,sans-serif;color:#fff;background:#07080A;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+.m-root *{box-sizing:border-box}
+h1,h2,h3,p{margin:0}
+.px{padding-left:20px;padding-right:20px}
+.mono{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.disp{font-stretch:72%;font-weight:850;text-transform:uppercase;letter-spacing:-.01em;line-height:.88}
+.h2{font-size:54px}
+.sec{padding-top:72px;padding-bottom:72px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 20px;border-radius:4px;font-weight:700;font-size:16px;text-decoration:none;transition:transform .16s ease,background .2s ease}
+.btn:active{transform:scale(.97)}
+.btn-blue{background:#1E5EFF;color:#fff}.btn-blue:hover{color:#fff;background:#3B74FF}
+.btn-line{border:1px solid rgba(255,255,255,.3);color:#fff}.btn-line:hover{color:#fff}
+.grid-bg{background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:40px 40px}
+.grid-bg-l{background-image:linear-gradient(rgba(7,8,10,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(7,8,10,.06) 1px,transparent 1px);background-size:40px 40px}
+.snap{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 20px;scrollbar-width:none}
+.snap::-webkit-scrollbar{display:none}
+/* exploded phone */
+.stage{perspective:1300px;width:300px;height:400px;position:relative;margin:0 auto}
+.stack{position:absolute;left:50%;top:52%;width:150px;height:300px;margin:-150px 0 0 -75px;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-38deg)}
+.ly{position:absolute;inset:0;border-radius:26px;transform-style:preserve-3d;animation:explode 5.5s cubic-bezier(.6,0,.3,1) infinite alternate}
+@keyframes explode{0%{transform:translateZ(calc(var(--z) * .12))}35%,100%{transform:translateZ(var(--z))}}
+/* diagnostic */
+.tab{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;min-height:68px;min-width:0;padding:8px 10px;border:1px solid rgba(7,8,10,.14);border-radius:4px;background:#fff;color:#07080A;font:inherit;cursor:pointer;text-align:left;transition:background .2s ease,color .2s ease,border-color .2s ease}
+.tab .n{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:#5E6673}
+.tab .t{font-size:15px;line-height:1;font-weight:800;font-stretch:78%;text-transform:uppercase;overflow-wrap:anywhere}
+.tab.on{background:#07080A;color:#fff;border-color:#07080A}
+.tab.on .n{color:#4D85FF}
+.zone{position:absolute;border:2px solid #1E5EFF;background:rgba(30,94,255,.16);transition:all .5s cubic-bezier(.2,.8,.2,1);animation:zpulse 1.8s ease-in-out infinite}
+@keyframes zpulse{0%,100%{box-shadow:0 0 0 5px rgba(30,94,255,.12),0 0 24px rgba(30,94,255,.4)}50%{box-shadow:0 0 0 10px rgba(30,94,255,.05),0 0 44px rgba(30,94,255,.6)}}
+@keyframes scan{0%{top:0}100%{top:100%}}
+.why{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start;padding:20px 0;border-top:1px solid rgba(7,8,10,.12)}
+.why h3{font-size:24px;font-stretch:80%;font-weight:800;text-transform:uppercase;line-height:1}
+.why p{color:#4A515C;line-height:1.45;font-size:15px;margin-top:6px}
+.rcard{flex:0 0 84%;scroll-snap-align:center;padding:24px;border:1px solid rgba(255,255,255,.1);border-radius:6px;background:#0F1115;display:flex;flex-direction:column;gap:18px}
+.bcard{flex:0 0 82%;scroll-snap-align:center;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(7,8,10,.12);border-radius:6px;overflow:hidden;color:#07080A}
+.bmap{position:relative;height:150px;background-color:#EEF0F3;background-image:linear-gradient(90deg,transparent 46%,#fff 46% 50%,transparent 50%),linear-gradient(0deg,transparent 58%,#fff 58% 62%,transparent 62%),linear-gradient(32deg,transparent 47%,rgba(255,255,255,.9) 47% 49%,transparent 49%),linear-gradient(rgba(7,8,10,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(7,8,10,.05) 1px,transparent 1px);background-size:100% 100%,100% 100%,100% 100%,28px 28px,28px 28px;border-bottom:1px solid rgba(7,8,10,.1)}
+.bpin{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;background:#1E5EFF;border:3px solid #fff;box-shadow:0 4px 12px rgba(30,94,255,.5)}
+.bpin::after{content:'';position:absolute;inset:-12px;border:1.5px solid #1E5EFF;animation:bping 2s ease-out infinite}
+@keyframes bping{0%{transform:scale(.4);opacity:1}100%{transform:scale(1.3);opacity:0}}
+.bcoord{position:absolute;left:10px;bottom:8px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.08em;color:#5E6673;background:rgba(255,255,255,.85);padding:2px 6px}
+/* menu */
+.mlink{display:flex;align-items:center;justify-content:space-between;min-height:68px;border-top:1px solid rgba(255,255,255,.1);color:#fff;text-decoration:none}
+/* whatsapp fab */
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:40;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.fab .st{display:flex;align-items:center;gap:8px;background:#07080A;color:#C3C9D4;border:1px solid rgba(255,255,255,.14);padding:7px 10px;border-radius:4px;animation:tip 7s 1.2s ease both}
+.fab a{display:flex;align-items:center;gap:10px;min-height:56px;padding:0 18px 0 8px;border-radius:4px;background:#1E5EFF;color:#fff;text-decoration:none;box-shadow:0 14px 34px rgba(30,94,255,.45),0 0 0 1px rgba(255,255,255,.12) inset;transition:transform .16s ease}
+.fab a:active{transform:scale(.95)}
+.fab .wi{width:40px;height:40px;border-radius:3px;background:rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center}
+@keyframes tip{0%{opacity:0;transform:translateY(6px)}8%,85%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes blink{50%{opacity:0}}
+@keyframes menuin{from{opacity:0}to{opacity:1}}
+@keyframes slidein{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.in1{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}.in2{animation:rise .8s .1s cubic-bezier(.2,.7,.2,1) both}.in3{animation:rise .8s .2s cubic-bezier(.2,.7,.2,1) both}
+.swap{animation:slidein .4s ease both}
+@supports (animation-timeline: view()){.rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% cover 25%}}
+@media (prefers-reduced-motion: reduce){.m-root *{animation:none !important;transition:none !important}}
+/* concept switcher */
+.cx2{position:fixed;right:8px;top:50%;z-index:200;font-family:-apple-system,system-ui,sans-serif}
+.cx2 summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.92);color:#0B0B0F;font-weight:700;font-size:15px;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.cx2 summary::-webkit-details-marker{display:none}
+.cx2 .menu{position:absolute;right:0;top:52px;display:flex;flex-direction:column;gap:2px;padding:6px;border-radius:18px;background:rgba(30,30,36,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);min-width:180px;box-shadow:0 12px 40px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1)}
+.cx2 .menu a{display:flex;align-items:center;min-height:44px;padding:0 14px;border-radius:12px;color:#fff;text-decoration:none;font-size:14px;font-weight:600}
+.cx2 .menu a:hover{background:rgba(255,255,255,.12);color:#fff}
+.cx2 .menu a.on{background:#fff;color:#0B0B0F}
+</style>
+</helmet>
+<div class="m-root" style="max-width: 480px; margin: 0 auto; min-height: 100vh; position: relative; overflow: hidden">
+
+<!-- NAV -->
+<header style="position: sticky; top: 0; z-index: 50; background: rgba(7,8,10,.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.08)">
+<div class="px" style="height: 60px; display: flex; align-items: center; justify-content: space-between; padding-right: 60px">
+<a href="#top" style="display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none">
+<span style="width: 30px; height: 30px; border-radius: 4px; background: #1E5EFF; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M13.5 2L5 13.5h6L10 22l9-12h-6.2z"></path></svg></span>
+<span class="disp" style="font-size: 24px">FixNow</span>
+</a>
+<button type="button" onClick="{{ openMenu }}" aria-label="Abrir menú" style="width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.2); border-radius: 4px; background: transparent; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer">
+<span style="width: 18px; height: 2px; background: #fff"></span><span style="width: 18px; height: 2px; background: #fff"></span>
+</button>
+</div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="grid-bg" style="position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,.08)">
+<div aria-hidden="true" style="position: absolute; inset: 0; background: radial-gradient(80% 50% at 60% 62%, rgba(30,94,255,.28), rgba(7,8,10,0) 70%)"></div>
+<div class="px" style="position: relative; padding-top: 40px; display: flex; flex-direction: column; gap: 20px">
+<p class="mono in1" style="color: #4D85FF; display: flex; align-items: center; gap: 8px"><span style="width: 7px; height: 7px; background: #1E5EFF; border-radius: 50%; animation: blink 1.4s steps(1) infinite"></span>[01] Servicio técnico iPhone — CABA</p>
+<h1 class="disp in2" style="font-size: 76px">Reparación<br><span style="color: #1E5EFF">a la vista.</span></h1>
+<p class="in3" style="font-size: 17px; line-height: 1.5; color: #C3C9D4">Abrimos tu iPhone delante tuyo. Rápido, seguro y con garantía: ves cada pieza, sin sorpresas.</p>
+</div>
+<div style="position: relative; margin-top: 8px">
+<div class="stage" role="img" aria-label="iPhone desarmado en capas: vidrio, pantalla, chasis, batería, placa y tapa trasera">
+<div class="stack">
+<div class="ly" style="--z: 0px; background: #1A1C22; box-shadow: inset 0 0 0 2px #2C2F37"><div style="position: absolute; top: 14px; left: 14px; width: 56px; height: 56px; border-radius: 16px; background: #0F1115; box-shadow: inset 0 0 0 2px #2C2F37"></div></div>
+<div class="ly" style="--z: 34px; inset: 22px 18px 112px 18px; border-radius: 10px; background-color: #0C1322; background-image: linear-gradient(90deg, rgba(77,133,255,.25) 1px, transparent 1px), linear-gradient(rgba(77,133,255,.25) 1px, transparent 1px); background-size: 14px 14px; box-shadow: inset 0 0 0 1.5px #24402C"></div>
+<div class="ly" style="--z: 68px; inset: 90px 22px 30px 22px; border-radius: 10px; background: #1E5EFF; box-shadow: inset 0 0 0 2px #4D85FF"></div>
+<div class="ly" style="--z: 102px; background: transparent; box-shadow: inset 0 0 0 6px #8B93A1, inset 0 0 0 8px #5E6673"></div>
+<div class="ly" style="--z: 136px; background: linear-gradient(160deg, #0E2A6B, #050B1C); box-shadow: inset 0 0 0 6px #000"></div>
+<div class="ly" style="--z: 170px; background: linear-gradient(135deg, rgba(255,255,255,.28), rgba(255,255,255,.04) 50%, rgba(255,255,255,.16)); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.55)"></div>
+</div>
+</div>
+<div class="px mono" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 4px; margin-bottom: 20px">
+<div style="display: flex; flex-direction: column; gap: 3px; padding-top: 10px; border-top: 1px solid rgba(77,133,255,.4)"><span style="color: #4D85FF">06 · Vidrio</span><span style="color: #9AA3B2; font-size: 10px">Desde 30 min</span></div>
+<div style="display: flex; flex-direction: column; gap: 3px; padding-top: 10px; border-top: 1px solid rgba(77,133,255,.4)"><span style="color: #4D85FF">03 · Batería</span><span style="color: #9AA3B2; font-size: 10px">Desde 45 min</span></div>
+</div>
+</div>
+<div class="px in3" style="position: relative; display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px">
+<a class="btn btn-blue" href="https://wa.me/"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.8 7L4 20l1.1-4A8 8 0 1 1 20 12z"></path><path d="M9.2 9.2c.3 2.6 2.2 4.6 4.8 5l1-1.3-1.7-.9-.8.8c-.8-.4-1.4-1-1.8-1.8l.8-.8-.9-1.7z"></path></svg>Cotizar por WhatsApp</a>
+<a class="btn btn-line" href="#diagnostico">Diagnosticá tu falla <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div style="position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,.08)">
+<div style="padding: 20px; border-right: 1px solid rgba(255,255,255,.08); border-bottom: 1px solid rgba(255,255,255,.08)"><span class="disp" style="font-size: 40px">30′</span><p class="mono" style="color: #9AA3B2; margin-top: 4px">Pantallas · desde</p></div>
+<div style="padding: 20px; border-bottom: 1px solid rgba(255,255,255,.08)"><span class="disp" style="font-size: 40px">45′</span><p class="mono" style="color: #9AA3B2; margin-top: 4px">Baterías · desde</p></div>
+<div style="padding: 20px; border-right: 1px solid rgba(255,255,255,.08)"><span class="disp" style="font-size: 40px">4,8<span style="color: #1E5EFF">★</span></span><p class="mono" style="color: #9AA3B2; margin-top: 4px">Reseñas Google</p></div>
+<div style="padding: 20px"><span class="disp" style="font-size: 40px">+ Miles</span><p class="mono" style="color: #9AA3B2; margin-top: 4px">de clientes</p></div>
+</div>
+</section>
+
+<!-- DIAGNOSTIC (white) -->
+<section id="diagnostico" class="grid-bg-l sec" style="background-color: #fff; color: #07080A">
+<div class="px rv" style="display: flex; flex-direction: column; gap: 14px">
+<p class="mono" style="color: #1E5EFF">[02] Diagnóstico</p>
+<h2 class="disp h2">¿Qué necesitás reparar?</h2>
+<p style="font-size: 16px; line-height: 1.5; color: #4A515C">Tocá la falla y mirá dónde trabajamos.</p>
+</div>
+<div class="px" style="margin-top: 22px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{ issues }}" as="it" hint-placeholder-count="6">
+<button type="button" class="tab {{ it.cls }}" onClick="{{ it.pick }}" aria-pressed="{{ it.pressed }}"><span class="n">{{ it.num }}</span><span class="t">{{ it.title }}</span></button>
+</sc-for>
+</div>
+<div class="px" style="margin-top: 14px">
+<div style="border: 1px solid rgba(7,8,10,.12); background: #F2F3F5; border-radius: 4px; padding: 20px; display: grid; grid-template-columns: 130px 1fr; gap: 18px; align-items: center">
+<div style="position: relative; width: 130px; height: 260px; border-radius: 24px; border: 2px solid #07080A; background: #fff" aria-hidden="true">
+<span style="position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 42px; height: 12px; border-radius: 8px; background: #07080A"></span>
+<span style="position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); width: 24px; height: 5px; border-radius: 3px 3px 0 0; background: #07080A"></span>
+<div class="zone" style="top: {{ zone.top }}; left: {{ zone.left }}; width: {{ zone.w }}; height: {{ zone.h }}; border-radius: {{ zone.r }}"></div>
+<div style="position: absolute; left: 0; right: 0; height: 2px; background: rgba(30,94,255,.5); animation: scan 2.6s linear infinite alternate"></div>
+</div>
+<div class="swap" style="display: flex; flex-direction: column; gap: 10px; min-width: 0">
+<p class="mono" style="color: #1E5EFF">Falla {{ cur.num }}</p>
+<h3 class="disp" style="font-size: 34px">{{ cur.title }}</h3>
+<p style="font-size: 15px; line-height: 1.4">{{ cur.symptom }}</p>
+<div style="border-top: 1px solid rgba(7,8,10,.12)">
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 8px 0; border-bottom: 1px solid rgba(7,8,10,.12)"><span class="mono" style="color: #4A515C">Tiempo</span><b style="font-size: 14px">{{ cur.time }}</b></div>
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 8px 0"><span class="mono" style="color: #4A515C">Garantía</span><b style="font-size: 14px">Incluida</b></div>
+</div>
+</div>
+</div>
+<a class="btn btn-blue" href="https://wa.me/" style="margin-top: 10px">Consultar esta falla <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</section>
+
+<!-- PROCESS (blue) -->
+<section id="proceso" class="sec" style="background: #1E5EFF; position: relative; overflow: hidden">
+<div aria-hidden="true" class="disp" style="position: absolute; right: -30px; bottom: -40px; font-size: 200px; color: rgba(255,255,255,.07); white-space: nowrap">VISTA</div>
+<div class="px rv" style="position: relative; display: flex; flex-direction: column; gap: 14px">
+<p class="mono" style="color: rgba(255,255,255,.85)">[03] ¿Cómo funciona?</p>
+<h2 class="disp h2">4 pasos.<br>Cero misterio.</h2>
+</div>
+<ol class="px" style="position: relative; list-style: none; margin: 32px 0 0; display: flex; flex-direction: column">
+<li class="rv" style="display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 18px 0; border-top: 2px solid #fff"><span class="mono">Paso 01</span><span><h3 class="disp" style="font-size: 30px">Escribinos</h3><p style="font-size: 15px; line-height: 1.45; color: rgba(255,255,255,.92); margin-top: 6px">Contanos la falla por WhatsApp. Respondemos en minutos.</p></span></li>
+<li class="rv" style="display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 18px 0; border-top: 1px solid rgba(255,255,255,.4)"><span class="mono">Paso 02</span><span><h3 class="disp" style="font-size: 30px">Vení a la sucursal</h3><p style="font-size: 15px; line-height: 1.45; color: rgba(255,255,255,.92); margin-top: 6px">Elegí una de nuestras 4 sucursales en CABA.</p></span></li>
+<li class="rv" style="display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 18px 0; border-top: 1px solid rgba(255,255,255,.4)"><span class="mono">Paso 03</span><span><h3 class="disp" style="font-size: 30px">Mirá la reparación</h3><p style="font-size: 15px; line-height: 1.45; color: rgba(255,255,255,.92); margin-top: 6px">Trabajamos delante tuyo, con repuestos de alta calidad.</p></span></li>
+<li class="rv" style="display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 18px 0; border-top: 1px solid rgba(255,255,255,.4)"><span class="mono">Paso 04</span><span><h3 class="disp" style="font-size: 30px">Llevátelo con garantía</h3><p style="font-size: 15px; line-height: 1.45; color: rgba(255,255,255,.92); margin-top: 6px">La mayoría, en menos de una hora.</p></span></li>
+</ol>
+</section>
+
+<!-- WHY (paper) -->
+<section class="sec" style="background: #F2F3F5; color: #07080A">
+<div class="px rv" style="display: flex; flex-direction: column; gap: 14px">
+<p class="mono" style="color: #1E5EFF">[04] Especificaciones del servicio</p>
+<h2 class="disp h2">¿Por qué FixNow?</h2>
+</div>
+<div class="px" style="margin-top: 26px; border-bottom: 1px solid rgba(7,8,10,.12)">
+<div class="why rv"><span style="width: 48px; height: 48px; border: 1px solid rgba(7,8,10,.14); background: #fff; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E5EFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></span><span><span class="mono" style="color: #5E6673">S-01</span><h3 style="margin-top: 4px">Reparación delante tuyo</h3><p>Ves todo el proceso, sin sorpresas.</p></span></div>
+<div class="why rv"><span style="width: 48px; height: 48px; border: 1px solid rgba(7,8,10,.14); background: #fff; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E5EFF" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span><span><span class="mono" style="color: #5E6673">S-02</span><h3 style="margin-top: 4px">Servicio rápido</h3><p>La mayoría de las reparaciones en menos de 1 hora.</p></span></div>
+<div class="why rv"><span style="width: 48px; height: 48px; border: 1px solid rgba(7,8,10,.14); background: #fff; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E5EFF" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.8-4.6 4.4 1.2 6.3L12 17l-5.7 3.1 1.2-6.3L2.9 9.4l6.3-.8z"></path></svg></span><span><span class="mono" style="color: #5E6673">S-03</span><h3 style="margin-top: 4px">Repuestos de alta calidad</h3><p>Funcionamiento y duración garantizados.</p></span></div>
+<div class="why rv"><span style="width: 48px; height: 48px; border: 1px solid rgba(7,8,10,.14); background: #fff; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E5EFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"></path></svg></span><span><span class="mono" style="color: #5E6673">S-04</span><h3 style="margin-top: 4px">Técnicos especializados</h3><p>Con experiencia en dispositivos de la línea premium.</p></span></div>
+<div class="why rv"><span style="width: 48px; height: 48px; border: 1px solid rgba(7,8,10,.14); background: #fff; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E5EFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg></span><span><span class="mono" style="color: #5E6673">S-05</span><h3 style="margin-top: 4px">4 sucursales en CABA</h3><p>Elegí la más cercana.</p></span></div>
+<div class="why rv"><span style="width: 48px; height: 48px; border: 1px solid rgba(7,8,10,.14); background: #fff; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E5EFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></span><span><span class="mono" style="color: #5E6673">S-06</span><h3 style="margin-top: 4px">Garantía</h3><p>En todas nuestras reparaciones.</p></span></div>
+</div>
+</section>
+
+<!-- REVIEWS (black) -->
+<section class="sec" style="background: #07080A">
+<div class="px rv" style="display: flex; flex-direction: column; gap: 14px">
+<p class="mono" style="color: #4D85FF">[05] Opiniones reales de Google</p>
+<div style="display: flex; align-items: flex-end; gap: 14px"><span class="disp" style="font-size: 100px; color: #1E5EFF">4,8</span><span style="padding-bottom: 8px"><span style="display: block; letter-spacing: 3px" aria-label="5 estrellas">★★★★★</span><span class="disp" style="font-size: 26px">Miles de clientes<br>ya confían</span></span></div>
+</div>
+<div class="snap rv" style="margin-top: 26px">
+<figure class="rcard" style="margin: 0"><span class="mono" style="color: #4D85FF">★★★★★ · Pantalla</span><blockquote style="margin: 0; font-size: 18px; line-height: 1.45; color: #E6E9EF">“Excelente atención. Me cambiaron la pantalla en menos de una hora y pude ver todo el proceso. Súper recomendados.”</blockquote><figcaption class="mono" style="color: #9AA3B2">— Mariana G.</figcaption></figure>
+<figure class="rcard" style="margin: 0"><span class="mono" style="color: #4D85FF">★★★★★ · Batería</span><blockquote style="margin: 0; font-size: 18px; line-height: 1.45; color: #E6E9EF">“Muy profesionales y honestos. La batería quedó perfecta y me explicaron todo antes de hacer la reparación.”</blockquote><figcaption class="mono" style="color: #9AA3B2">— Lucas R.</figcaption></figure>
+<figure class="rcard" style="margin: 0"><span class="mono" style="color: #4D85FF">★★★★★ · Atención</span><blockquote style="margin: 0; font-size: 18px; line-height: 1.45; color: #E6E9EF">“La atención es impecable. Se nota que saben lo que hacen. Rápido, claro y con garantía.”</blockquote><figcaption class="mono" style="color: #9AA3B2">— Carolina M.</figcaption></figure>
+</div>
+<div class="px"><a class="mono" href="#" style="color: #fff; text-decoration: underline; text-underline-offset: 4px; min-height: 48px; display: flex; align-items: center; margin-top: 8px">Ver todas las reseñas →</a></div>
+</section>
+
+<!-- BRANCHES (white, map cards) -->
+<section id="sucursales" class="sec" style="background: #fff; color: #07080A">
+<div class="px rv" style="display: flex; flex-direction: column; gap: 14px">
+<p class="mono" style="color: #1E5EFF">[06] Sucursales</p>
+<h2 class="disp h2">Estamos en<br>tu barrio.</h2>
+<p style="font-size: 15px; color: #4A515C">Deslizá para ver las 4.</p>
+</div>
+<div class="snap rv" style="margin-top: 22px">
+<article class="bcard"><div class="bmap" aria-hidden="true"><span class="bpin" style="left: 48%; top: 42%"></span><span class="bcoord">S/01 · Belgrano</span></div><div style="padding: 18px; display: flex; flex-direction: column; gap: 4px"><span class="mono" style="color: #1E5EFF">S/01</span><h3 class="disp" style="font-size: 36px">Belgrano</h3><p style="color: #4A515C; font-size: 15px">Av. Balbín 2570</p><a class="btn" href="#" style="margin-top: 10px; min-height: 48px; border: 1px solid #07080A; color: #07080A; font-size: 14px">Cómo llegar ↗</a></div></article>
+<article class="bcard"><div class="bmap" aria-hidden="true" style="background-position: 30% 0, 0 20%, 0 0, 0 0, 0 0"><span class="bpin" style="left: 36%; top: 64%"></span><span class="bcoord">S/02 · Villa Urquiza</span></div><div style="padding: 18px; display: flex; flex-direction: column; gap: 4px"><span class="mono" style="color: #1E5EFF">S/02</span><h3 class="disp" style="font-size: 36px">Villa Urquiza</h3><p style="color: #4A515C; font-size: 15px">Triunvirato 5474</p><a class="btn" href="#" style="margin-top: 10px; min-height: 48px; border: 1px solid #07080A; color: #07080A; font-size: 14px">Cómo llegar ↗</a></div></article>
+<article class="bcard"><div class="bmap" aria-hidden="true" style="background-position: -20% 0, 0 -30%, 0 0, 0 0, 0 0"><span class="bpin" style="left: 60%; top: 38%"></span><span class="bcoord">S/03 · Villa Crespo</span></div><div style="padding: 18px; display: flex; flex-direction: column; gap: 4px"><span class="mono" style="color: #1E5EFF">S/03</span><h3 class="disp" style="font-size: 36px">Villa Crespo</h3><p style="color: #4A515C; font-size: 15px">Thames 660</p><a class="btn" href="#" style="margin-top: 10px; min-height: 48px; border: 1px solid #07080A; color: #07080A; font-size: 14px">Cómo llegar ↗</a></div></article>
+<article class="bcard"><div class="bmap" aria-hidden="true" style="background-position: 60% 0, 0 60%, 0 0, 0 0, 0 0"><span class="bpin" style="left: 52%; top: 70%"></span><span class="bcoord">S/04 · Recoleta</span></div><div style="padding: 18px; display: flex; flex-direction: column; gap: 4px"><span class="mono" style="color: #1E5EFF">S/04</span><h3 class="disp" style="font-size: 36px">Recoleta</h3><p style="color: #4A515C; font-size: 15px">Av. Santa Fe [ALTURA]</p><a class="btn" href="#" style="margin-top: 10px; min-height: 48px; border: 1px solid #07080A; color: #07080A; font-size: 14px">Cómo llegar ↗</a></div></article>
+</div>
+<div class="px" style="margin-top: 16px"><a class="btn" href="#" style="border: 1px solid #07080A; color: #07080A">Ver todas en el mapa</a></div>
+</section>
+
+<!-- ACCESSORIES (black) -->
+<section id="accesorios" class="grid-bg sec" style="background-color: #07080A; border-top: 1px solid rgba(255,255,255,.08)">
+<div class="px rv" style="display: flex; flex-direction: column; gap: 14px">
+<p class="mono" style="color: #4D85FF">[07] Accesorios</p>
+<h2 class="disp h2">Protegé tu<br>dispositivo.</h2>
+<p style="font-size: 16px; line-height: 1.5; color: #C3C9D4">Fundas, protectores, cargadores y más. Todo en un solo lugar.</p>
+</div>
+<div class="px rv" style="margin-top: 22px">
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.1)">
+<div style="background: #0F1115; padding: 14px; display: flex; flex-direction: column; gap: 12px; min-height: 150px"><span class="mono" style="color: #9AA3B2; font-size: 10px">A-01</span><div aria-hidden="true" style="width: 34px; height: 62px; border-radius: 10px; border: 2px solid #4D85FF; position: relative"><span style="position: absolute; top: 4px; left: 4px; width: 12px; height: 12px; border-radius: 4px; border: 2px solid #4D85FF"></span></div><b style="font-size: 15px; font-stretch: 80%; text-transform: uppercase; margin-top: auto">Fundas</b></div>
+<div style="background: #0F1115; padding: 14px; display: flex; flex-direction: column; gap: 12px; min-height: 150px"><span class="mono" style="color: #9AA3B2; font-size: 10px">A-02</span><div aria-hidden="true" style="width: 34px; height: 62px; border-radius: 10px; border: 2px dashed #4D85FF; background: rgba(77,133,255,.12)"></div><b style="font-size: 15px; font-stretch: 80%; text-transform: uppercase; margin-top: auto">Protectores</b></div>
+<div style="background: #0F1115; padding: 14px; display: flex; flex-direction: column; gap: 12px; min-height: 150px"><span class="mono" style="color: #9AA3B2; font-size: 10px">A-03</span><div aria-hidden="true" style="width: 46px; height: 46px; border-radius: 12px; border: 2px solid #4D85FF; display: flex; align-items: center; justify-content: center; margin: 8px 0"><svg width="20" height="20" viewBox="0 0 24 24" fill="#4D85FF"><path d="M13.5 2L5 13.5h6L10 22l9-12h-6.2z"></path></svg></div><b style="font-size: 15px; font-stretch: 80%; text-transform: uppercase; margin-top: auto">Cargadores</b></div>
+</div>
+<div class="mono" style="display: flex; flex-direction: column; gap: 10px; margin: 18px 0">
+<span style="display: flex; align-items: center; gap: 10px; color: #E6E9EF"><span style="width: 6px; height: 6px; background: #1E5EFF"></span>Envíos a todo el país</span>
+<span style="display: flex; align-items: center; gap: 10px; color: #E6E9EF"><span style="width: 6px; height: 6px; background: #1E5EFF"></span>Retirá en sucursal</span>
+<span style="display: flex; align-items: center; gap: 10px; color: #E6E9EF"><span style="width: 6px; height: 6px; background: #1E5EFF"></span>Alta calidad</span>
+</div>
+<a class="btn btn-line" href="#">Ver tienda online <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</section>
+
+<!-- CTA + FOOTER -->
+<footer id="contacto">
+<div style="background: #1E5EFF; padding: 72px 20px">
+<h2 class="disp rv" style="font-size: 84px">Escri&shy;binos.</h2>
+<p style="font-size: 17px; line-height: 1.5; margin-top: 16px">Contanos qué le pasó a tu iPhone. Te respondemos en minutos.</p>
+<a class="btn" href="https://wa.me/" style="background: #07080A; color: #fff; margin-top: 20px">Cotizar por WhatsApp</a>
+</div>
+<div class="px" style="background: #07080A; padding-top: 40px; padding-bottom: 130px; display: flex; flex-direction: column; gap: 10px">
+<span class="disp" style="font-size: 28px">FixNow</span>
+<span class="mono" style="color: #9AA3B2">Tu dispositivo, en buenas manos</span>
+<span class="mono" style="color: #9AA3B2">WhatsApp [NÚMERO] · Instagram [@USUARIO]</span>
+</div>
+</footer>
+
+<!-- WhatsApp FAB -->
+<div class="fab">
+<span class="st mono"><span style="width: 6px; height: 6px; border-radius: 50%; background: #1E5EFF; animation: blink 1.4s steps(1) infinite"></span>Respondemos en minutos</span>
+<a href="https://wa.me/" aria-label="Escribinos por WhatsApp">
+<span class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.8 7L4 20l1.1-4A8 8 0 1 1 20 12z"></path><path d="M9.2 9.2c.3 2.6 2.2 4.6 4.8 5l1-1.3-1.7-.9-.8.8c-.8-.4-1.4-1-1.8-1.8l.8-.8-.9-1.7z"></path></svg></span>
+<span class="mono" style="font-size: 13px; font-weight: 600">WhatsApp</span>
+</a>
+</div>
+
+<!-- Fullscreen menu -->
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+<div class="grid-bg" role="dialog" aria-label="Menú" style="position: fixed; inset: 0; z-index: 90; background-color: #07080A; animation: menuin .25s ease both; display: flex; justify-content: center">
+<div style="width: 100%; max-width: 480px; padding: 0 20px; display: flex; flex-direction: column">
+<div style="height: 60px; display: flex; align-items: center; justify-content: space-between; padding-right: 40px">
+<span class="disp" style="font-size: 24px">FixNow</span>
+<button type="button" onClick="{{ closeMenu }}" aria-label="Cerrar menú" style="width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.2); border-radius: 4px; background: transparent; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+<nav aria-label="Principal" style="margin-top: 24px; border-bottom: 1px solid rgba(255,255,255,.1)">
+<a class="mlink swap" href="#diagnostico" onClick="{{ closeMenu }}"><span class="disp" style="font-size: 40px">Reparaciones</span><span class="mono" style="color: #4D85FF">01</span></a>
+<a class="mlink swap" href="#proceso" onClick="{{ closeMenu }}"><span class="disp" style="font-size: 40px">Proceso</span><span class="mono" style="color: #4D85FF">02</span></a>
+<a class="mlink swap" href="#sucursales" onClick="{{ closeMenu }}"><span class="disp" style="font-size: 40px">Sucursales</span><span class="mono" style="color: #4D85FF">03</span></a>
+<a class="mlink swap" href="#accesorios" onClick="{{ closeMenu }}"><span class="disp" style="font-size: 40px">Accesorios</span><span class="mono" style="color: #4D85FF">04</span></a>
+<a class="mlink swap" href="#contacto" onClick="{{ closeMenu }}"><span class="disp" style="font-size: 40px">Contacto</span><span class="mono" style="color: #4D85FF">05</span></a>
+</nav>
+<a class="btn btn-blue" href="https://wa.me/" style="margin-top: 28px">Consultá ahora por WhatsApp</a>
+</div>
+</div>
+</sc-if>
+
+<!-- Concept switcher -->
+<details class="cx2">
+<summary aria-label="Cambiar de vista (actual: B teléfono)">B</summary>
+<div class="menu">
+<a href="Taller.dc.html">B · Desktop</a>
+<a class="on" href="TallerMovil.dc.html" aria-current="page">B · Teléfono</a>
+<a href="Chat.dc.html">D · Chat (reserva)</a>
+</div>
+</details>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":6600}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { sel: 0, menu: false };
+}
+renderVals() {
+var self = this;
+var data = [
+{ num: '01', title: 'Pantalla', symptom: 'Vidrio roto, manchas o sin imagen.', time: 'Desde 30 min', zone: { top: '3px', left: '3px', w: '120px', h: '250px', r: '20px' } },
+{ num: '02', title: 'Batería', symptom: 'Se descarga rápido o no carga.', time: 'Desde 45 min', zone: { top: '84px', left: '23px', w: '80px', h: '130px', r: '9px' } },
+{ num: '03', title: 'Vidrio trasero', symptom: 'Roto o con fisuras.', time: 'Consultá por WhatsApp', zone: { top: '-7px', left: '-7px', w: '140px', h: '270px', r: '28px' } },
+{ num: '04', title: 'Carga', symptom: 'No carga, carga lento o se corta.', time: 'Consultá por WhatsApp', zone: { top: '228px', left: '42px', w: '42px', h: '30px', r: '8px' } },
+{ num: '05', title: 'Cámara', symptom: 'Fotos borrosas o no funciona.', time: 'Consultá por WhatsApp', zone: { top: '10px', left: '10px', w: '54px', h: '54px', r: '14px' } },
+{ num: '06', title: 'Equipo mojado', symptom: 'No enciende o presenta fallas. Apagalo y traelo cuanto antes.', time: 'Lo antes posible', zone: { top: '46px', left: '15px', w: '96px', h: '190px', r: '50%' } }
+];
+var sel = this.state.sel;
+return {
+issues: data.map(function (d, i) { return { num: d.num, title: d.title, cls: i === sel ? 'on' : '', pressed: i === sel ? 'true' : 'false', pick: function () { self.setState({ sel: i }); } }; }),
+cur: data[sel],
+zone: data[sel].zone,
+menuOpen: this.state.menu,
+openMenu: function () { self.setState({ menu: true }); },
+closeMenu: function () { self.setState({ menu: false }); }
+};
+}
+}
+</script>
+</body>
+</html>
